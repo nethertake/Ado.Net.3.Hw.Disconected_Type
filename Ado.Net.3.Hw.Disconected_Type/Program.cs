@@ -11,8 +11,10 @@ namespace Ado.Net._3.Hw.Disconected_Type
     {
         static void Main(string[] args)
         {
+            CreateTable();
+          
         }
-        public void CreateTable()
+      public  static void CreateTable()
         {
             //1 table TrackEvaluationPart
 
@@ -70,12 +72,6 @@ namespace Ado.Net._3.Hw.Disconected_Type
             trackEvaluationPart.Columns.Add(intPartStatus);
 
             trackEvaluationPart.PrimaryKey = new DataColumn[] { trackEvaluationPart.Columns["intEvaluationPartId"] };
-
-            DataRow row = trackEvaluationPart.NewRow();
-            row.ItemArray = new object[] { null, 433 };
-            trackEvaluationPart.Rows.Add(row); // добавляем первую строку
-            trackEvaluationPart.Rows.Add(new object[]
-                {null, 123, 2.5, 2.5, 2.4, "string", "string", 23, 233}); // добавляем вторую строку
 
             #endregion
 
@@ -264,17 +260,44 @@ namespace Ado.Net._3.Hw.Disconected_Type
             #endregion
 
 
-
-
-            //Console.Write("\tИд \tНазвание \tЦена \tСкидка");
-            //Console.WriteLine();
-            //foreach (DataRow r in trackEvaluationPart.Rows)
+            //foreach (DataRow item in trackEvaluationPart.Rows)
             //{
-            //    foreach (var cell in r.ItemArray)
+            //    foreach (var cell in item.ItemArray)
+            //    {
             //        Console.Write("\t{0}", cell);
-            //    Console.WriteLine();
+            //    }
+
             //}
 
+
+            //Просмотр названия полей и его типов данных
+
+            foreach (DataColumn item in trackEvaluationPart.Columns)
+            {
+                Console.WriteLine("\t" + item.ColumnName + " - " + item.DataType);
+            }
+
+            trackEvaluationPart.Rows.Add(new object[]{8, 1, 244, 1, 2.26, 2.03 });
+            trackEvaluationPart.Rows.Add(new object[]{9, 1, 467, 2, 7448.28, 6691.27 });
+            trackEvaluationPart.Rows.Add(new object[]{10, 1, 475, 3, 0, 724.14 });
+            trackEvaluationPart.Rows.Add(new object[]{ 13, 1, 4806, 4, 0, 183.6 });
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("id \t EvaluationPart \t MasterPart \t Quantity \t UnitCost \t CostAvia");
+            foreach (DataRow item in trackEvaluationPart.Rows)
+            {
+                foreach (var cell in item.ItemArray )
+                {
+                    Console.Write("{0}\t\t", cell);
+                    
+                }
+                Console.WriteLine();
+            }
+
+          
         }
+
+     
+
     }
 }
