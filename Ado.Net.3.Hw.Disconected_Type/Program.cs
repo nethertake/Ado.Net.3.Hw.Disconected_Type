@@ -260,16 +260,6 @@ namespace Ado.Net._3.Hw.Disconected_Type
             #endregion
 
 
-            //foreach (DataRow item in trackEvaluationPart.Rows)
-            //{
-            //    foreach (var cell in item.ItemArray)
-            //    {
-            //        Console.Write("\t{0}", cell);
-            //    }
-
-            //}
-
-
             //Просмотр названия полей и его типов данных
 
             foreach (DataColumn item in trackEvaluationPart.Columns)
@@ -294,7 +284,8 @@ namespace Ado.Net._3.Hw.Disconected_Type
                 Console.WriteLine();
             }
 
-          
+            Console.ReadKey();
+
         }
 
      
